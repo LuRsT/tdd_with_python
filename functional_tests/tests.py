@@ -32,8 +32,8 @@ class NewVisitorTest(LiveServerTestCase):
         # She is invited to enter a to-do item straight away
         inputbox = self.browser.find_element_by_id('id_new_item')
         self.assertEqual(
-                inputbox.get_attribute('placeholder'),
-                'Enter a to-do item'
+            inputbox.get_attribute('placeholder'),
+            'Enter a to-do item'
         )
 
         # She types "Buy peacock feathers" into a text box (Edith's hobby
@@ -84,8 +84,8 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertNotEqual(francis_list_url, edith_list_url)
 
         # Again, there is no trace of Edith's list
-        page_text = self.browser.find_elements_by_tag_name('body').text
+        page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers', page_text)
-        self.assertNotIn('Buy milk', page_text)
+        self.assertIn('Buy milk', page_text)
 
         # Satisfied, they both go to sleep
